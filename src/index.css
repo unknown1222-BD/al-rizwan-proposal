@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #00f2ff;
+  --secondary: #ffd700;
+  --bg: #050505;
+  --accent: #1a1a1a;
+  --text: #ffffff;
+  --text-dim: #a0a0a0;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.presentation-container {
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  height: 100dvh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2dvh 4rem;
+  overflow: hidden;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: clamp(1rem, 3dvh, 3rem);
+  max-width: 800px;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.glass-card::-webkit-scrollbar {
+  width: 6px;
+}
+.glass-card::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg) 90%);
+  z-index: 1;
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.secondary-highlight {
+  color: var(--secondary);
+}
+
+/* Animations */
+.reveal-text {
+  overflow: hidden;
+}
+
+.reveal-text > * {
+  transform: translateY(100%);
+}
+
+/* Pricing Table */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1dvh;
+  font-size: clamp(0.7rem, 1.2dvh, 0.85rem);
+}
+
+.pricing-table th, .pricing-table td {
+  padding: clamp(0.3rem, 0.8dvh, 0.6rem) 0.8rem;
+  border-bottom: 1px solid var(--glass-border);
+  text-align: left;
+}
+
+.pricing-table th {
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+/* Swiper overrides */
+.swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  background: var(--bg);
+}
+
+.swiper-pagination-bullet {
+  background: var(--primary) !important;
+}
+
+/* Specific Layouts */
+.split-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+}
+
+.split-left, .split-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.split-line {
+  position: absolute;
+  width: 1px;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+  left: 50%;
+  top: 25%;
+  z-index: 5;
+}
+
+.pain-points-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pain-item {
+  padding: 1.5rem;
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.code-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  color: rgba(0, 242, 255, 0.05);
+  overflow: hidden;
+  filter: blur(2px);
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1.2;
+}
+
+.watermark {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.9;
+  background: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .watermark {
+    width: 60px;
+    height: 60px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .glass-card {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}
